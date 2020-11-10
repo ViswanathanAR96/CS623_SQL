@@ -7,9 +7,7 @@ class SQLConnect:
         self.host = host
         self.port = port
         self.database = database
-        #connection, cursor = self.connect()
-        #self.connect_close(connection, cursor)
-    
+
     def connect(self):
         try:
             connection = psycopg2.connect(user = self.user,
@@ -30,8 +28,4 @@ class SQLConnect:
             cursor.close()
             connection.close()
             print("PostgreSQL connection is closed")
-
-# a = SQLConnect(user = "postgres", password = "user", host = "127.0.0.1", port = "5432", database = "test_db")
-# connection, cursor = a.connect()
-# a.connect_close(connection, cursor)
 

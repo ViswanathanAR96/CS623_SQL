@@ -8,15 +8,6 @@ class Transaction(SQLConnect):
     def manageTransaction(self, prodId, upd_ProdId, upd_ProdId2):
         connection, cursor = super().connect()
         connection.autocommit = False
-        
-        # try:
-        #     cursor.execute("ALTER TABLE Stock DROP CONSTRAINT fk_stock_prodid;")
-        #     connection.commit()
-        # except (Exception, psycopg2.Error) as error:
-        #     connection.rollback()
-        #     cursor.close()
-        #     connection.close()
-        #     return
         try:
             cursor.execute("ALTER TABLE Stock DROP CONSTRAINT fk_stock_prodid;")
             cursor.execute(f"UPDATE Products SET prod_id = \'{upd_ProdId}\' WHERE prod_id = \'{prodId}\';")
@@ -26,7 +17,25 @@ class Transaction(SQLConnect):
         except (Exception, psycopg2.Error) as error:
             print(error)
             connection.rollback()
-            super().connect_close(connection, cursor)
+        super().connect_close(connection, cursor)
+    
+    def selectRecords(self):
+        connection, cursor = super().connect()
+        try:
+            cursor.execute("SELECT prod_id, pname, price from Products")
+            rows = cursor.fetchall()
+            for r in rows:
+                print(f"prod_id: {r[0]}\t name: {r[1]}\t Price:{r[2]}")
+            print('\n')
+            cursor.execute("SELECT prod_id, dep_id, quantity FROM Stock")
+            rows = cursor.fetchall()
+            for r in rows:
+                print(f"prod_id: {r[0]}\t dep_id: {r[1]}\t Quantity:{r[2]}")
+        except(Exception, psycopg2.Error) as error:
+            print(error)
+        super().connect_close(connection, cursor)
+
             
 v = Transaction(user = "postgres", password = "user", host = "127.0.0.1", port = "5432", database = "test_db")
 v.manageTransaction('p1', 'pp1', 'pp2')
+v.selectRecords()
