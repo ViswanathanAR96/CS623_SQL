@@ -20,8 +20,7 @@ class SQLConnect:
 
             cursor = connection.cursor()
             # Print PostgreSQL Connection properties
-            print ( connection.get_dsn_parameters(),"\n")
-            
+                      
         except (Exception, psycopg2.Error) as error :
             print ("Error while connecting to PostgreSQL", error)
         return connection, cursor
