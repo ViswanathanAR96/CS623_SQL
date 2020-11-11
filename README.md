@@ -5,9 +5,9 @@ SQL with Python Project Repository
 ![Schema](https://github.com/ViswanathanAR96/CS627_SQL/blob/maseter_v2/Drawing1.jpg)
 
 ## Reducing Schema to Entity Relationship
-- Product (prodId, pname, price)/
-- Depot (depId, addr, volume)/
-- Stock (prodId, depId, quantity)/
+- Product (prodId, pname, price)
+- Depot (depId, addr, volume)
+- Stock (prodId, depId, quantity)
 
 ### Algorithm
 - 	Product has Stock (1N):\
