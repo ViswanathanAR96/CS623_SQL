@@ -3,7 +3,7 @@ from Pysql import SQLConnect
 
 class Transaction(SQLConnect):
     def __init__(self, user, password, host, port, database):
-        super().__init__(user, password, host, port, database)
+        su  per().__init__(user, password, host, port, database)
 
     def manageTransaction(self, prodId, upd_ProdId, upd_ProdId2):
         connection, cursor = super().connect()
