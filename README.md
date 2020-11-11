@@ -65,12 +65,12 @@ A pythonic implementation of Database transactions using Psycopg2 as the ORM.
 There are two python files. Pysql.py contains SQLConnect class which has methods to open and close connection to database. Transaction.py contains Transaction.class which contains two methods to initiate the updating of Stock and Products table. And, another method to print  records from the Stock and Products table.
 
 #### Statement: The product p1 changes its name to pp1 in Product and Stock.
-The transaction should be consistent and atomic before, on and after running the following transactions:
-    - Remove the fk_Stock_prodid constraint from Stock Table
-    - Update Products table with p1 = pp1
-    - Update stock table with p1 = pp1
-    - Add fk_Stock_prodid constraint from Stock Table
-The ACID properties of the transaction is managed here by setting autocommit = False, then executig the above transactions, committing the transacions to the datbase if there are no exceptions/errors. If htere are error(s), rollback the transaction o previous state.
+The transaction should be consistent and atomic before, on and after running the following transactions
+1. Remove the fk_Stock_prodid constraint from Stock Table
+2. Update Products table with p1 = pp1
+3. Update stock table with p1 = pp1
+4. Add fk_Stock_prodid constraint from Stock Table  
+The ACID properties of the transaction is managed here by setting autocommit = False, then executig the above transactions, committing the transacions to the datbase if there are no exceptions/errors. If htere are error(s), rollback the transaction o previous state.  
 On running the select query, the transaction's validity could be verified.
     
 
