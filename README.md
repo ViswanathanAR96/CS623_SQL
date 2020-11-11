@@ -20,8 +20,8 @@ Stock (prodId, depId, quantity)
     Depot(depId, addr, volume)
 
 ### Entity Relationship
-- Product (prodId, pname, price)
-- Depot (depId, addr, volume)
+- Product (prodId, pname, price), PK = prodId
+- Depot (depId, addr, volume), PK = depId
 - Stock (quantity)
 
 ## ER Diagram
